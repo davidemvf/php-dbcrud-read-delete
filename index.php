@@ -24,10 +24,33 @@
     <!-- JS: MY SCRIPT -->
     <script src="script.js" charset="utf-8"></script>
 
-    <title>Stanze</title>
+    <title>Pagamenti</title>
 
   </head>
   <body>
-    <h1>Hello World</h1>
+    <div class="container">
+      <div class="accepted">
+        <h2>Accepted</h2>
+
+      </div>
+      <div class="pending">
+        <h2>Pending</h2>
+
+      </div>
+      <div class="rejected">
+        <h2>Rejected</h2>
+
+      </div>
+
+    </div>
+
+    <!-- template contenitore pagamenti -->
+    <script id="entry-template" type="text/x-handlebars-template">
+      <div class="pagamento">
+        <h4>Numero pagamento: {{numero}}</h4>
+        <h4>{{status}}</h4>
+        <h4>{{price}}</h4>
+      </div>
+    </script>
   </body>
 </html>
