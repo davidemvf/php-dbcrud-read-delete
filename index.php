@@ -46,10 +46,11 @@
 
     <!-- template contenitore pagamenti -->
     <script id="entry-template" type="text/x-handlebars-template">
-      <div class="pagamento">
+      <div class="pagamento" data-id="{{id}}">
         <h4>Numero pagamento: {{numero}}</h4>
         <h4>{{status}}</h4>
         <h4>{{price}}</h4>
+        <h4 class="delete"> Delete </h4>
       </div>
     </script>
   </body>

@@ -3,9 +3,14 @@ $(document).ready(init);
 function init() {
   console.log("Hello World");
   getData();
+  $(document).on("click", ".delete", deleteItem);
 };
 
 function getData() {
+
+  // resetPagamenti();
+
+
   $.ajax({
     url: "apiUno.php",
     method: "GET",
@@ -41,8 +46,33 @@ function toAppend(data, i) {
   var source   = document.getElementById("entry-template").innerHTML;
   var template = Handlebars.compile(source);
 
-  var context = {status: data[i].status, price: data[i].price, numero: i+1};
+  var context = {id: data[i].id, status: data[i].status, price: data[i].price, numero: i+1};
   var html    = template(context);
 
   return(html);
+}
+
+function deleteItem() {
+  var on_click = $(this);
+  var item = on_click.parent();
+  var idPagamento = item.data("id");
+  console.log((idPagamento));
+
+  $.ajax({
+    url: "apiDel.php",
+    method: "GET",
+    data: {id: idPagamento},
+    success: function(data) {
+      getData();
+    },
+    error: function () {
+      alert("Errore");
+    }
+  })
+}
+
+function resetPagamenti() {
+  $(".accepted").html("");
+  $(".pending").html("");
+  $(".rejected").html("");
 }
